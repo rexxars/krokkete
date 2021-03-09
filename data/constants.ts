@@ -1,6 +1,6 @@
-export const ALLOWED_AMOUNTS = ['Litt', 'Veldig', 'Skikkelig', 'Jævla', 'Ekstremt']
-export const AMOUNT_SLUGS = ['litt', 'veldig', 'skikkelig', 'jaevla', 'ekstremt']
-export const AMOUNT_SO_PREFIXED = [false, false, false, true, true]
+export const ALLOWED_AMOUNTS = ['Litt', 'Ganske', 'Veldig', 'Skikkelig', 'Jævla', 'Ekstremt']
+export const AMOUNT_SLUGS = ['litt', 'ganske', 'veldig', 'skikkelig', 'jaevla', 'ekstremt']
+export const AMOUNT_SO_PREFIXED = [false, false, false, false, true, true]
 export const DEFAULT_AMOUNT = 'veldig'
 export const DOMAIN_NAME = 'krøkkete.com'
 export const IS_LOCAL = process.env.NODE_ENV !== 'production'
