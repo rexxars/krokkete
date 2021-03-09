@@ -18,14 +18,16 @@ export function Layout({children}) {
 
       <OpenGraph />
 
-      <Flex direction="column" justify="space-between" style={{minHeight: '100vh'}}>
-        <Card flex={1} padding={4}>
-          {children}
-        </Card>
-        <Card flex={0.1}>
-          <Footer />
-        </Card>
-      </Flex>
+      <div style={{maxWidth: 472, margin: '0 auto'}}>
+        <Flex direction="column" justify="space-between" style={{minHeight: '100vh'}}>
+          <Card flex={1} padding={4}>
+            {children}
+          </Card>
+          <Card flex={0.1}>
+            <Footer />
+          </Card>
+        </Flex>
+      </div>
     </ThemeProvider>
   )
 }
