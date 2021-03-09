@@ -28,9 +28,10 @@ const defaultWhat = 'Dette'
 const enc = encodeURIComponent
 
 function getUrl({what, amount, reason}) {
+  const withReason = reason ? `?reason=${enc(reason)}` : ''
   return IS_LOCAL
-    ? `/${enc(amount)}/${enc(what)}?reason=${enc(reason)}`
-    : `https://${enc(amount)}.${DOMAIN_NAME}/${enc(what)}?reason=${enc(reason)}`
+    ? `/${enc(amount)}/${enc(what)}${withReason}`
+    : `https://${enc(amount)}.${DOMAIN_NAME}/${enc(what)}${withReason}`
 }
 
 function handleSubmit(evt: React.FormEvent<HTMLFormElement>) {
