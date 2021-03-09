@@ -14,6 +14,7 @@ import {
 import {
   ALLOWED_AMOUNTS,
   AMOUNT_SLUGS,
+  BASE_URL,
   DEFAULT_AMOUNT,
   DOMAIN_NAME,
   IS_LOCAL,
@@ -137,6 +138,12 @@ function HomePage() {
       </form>
     </Layout>
   )
+}
+
+export async function getServerSideProps({req}) {
+  const host = req.headers.host || ''
+  const redirect = !IS_LOCAL && !host.startsWith('www') && !host.startsWith('xn--')
+  return redirect ? {redirect: {destination: BASE_URL, permanent: true}} : {props: {}}
 }
 
 export default HomePage
