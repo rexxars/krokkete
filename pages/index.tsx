@@ -19,6 +19,7 @@ import {
   IS_LOCAL,
 } from '../data/constants'
 import {Layout} from '../components/Layout'
+import {CrookedText} from '../components/CrookedText'
 
 const maxWhatLength = 60
 const maxReasonLength = 300
@@ -47,6 +48,9 @@ function HomePage() {
 
   const [reason, setReason] = React.useState('')
   const handleReasonChange = React.useCallback((evt) => setReason(evt.target.value), [setReason])
+
+  const [amount, setAmount] = React.useState(DEFAULT_AMOUNT)
+  const handleAmountChange = React.useCallback((evt) => setAmount(evt.target.value), [setAmount])
 
   return (
     <Layout>
@@ -87,7 +91,12 @@ function HomePage() {
 
           <Stack space={3}>
             <Label htmlFor="amount">Hvor krøkkete er det?</Label>
-            <Select name="amount" id="amount" defaultValue={DEFAULT_AMOUNT}>
+            <Select
+              name="amount"
+              id="amount"
+              defaultValue={DEFAULT_AMOUNT}
+              onChange={handleAmountChange}
+            >
               {ALLOWED_AMOUNTS.map((amount, i) => {
                 const slug = AMOUNT_SLUGS[i]
                 return (
@@ -112,6 +121,13 @@ function HomePage() {
               maxLength={maxReasonLength}
               value={reason}
             />
+          </Stack>
+
+          <Stack space={3}>
+            <Label htmlFor="preview">Hør på deg selv, a</Label>
+            <Text id="preview" size={2} weight="semibold">
+              <CrookedText amount={amount} what={what} reason={reason} />
+            </Text>
           </Stack>
 
           <Stack space={3}>
