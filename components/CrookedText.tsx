@@ -1,11 +1,13 @@
 import React from 'react'
-import {AMOUNT_SLUGS, AMOUNT_SO_PREFIXED} from '../data/constants'
+import {AMOUNT_SLUGS, AMOUNT_SO_PREFIXED, ALLOWED_AMOUNTS} from '../data/constants'
 
 export function getCrookedText({amount, what, reason = ''}) {
-  const index = AMOUNT_SLUGS.indexOf(toAmountSlug(amount))
+  const amountSlug = toAmountSlug(amount)
+  const index = AMOUNT_SLUGS.indexOf(amountSlug)
+  const amountText = lcFirst(ALLOWED_AMOUNTS[index])
   const prefix = AMOUNT_SO_PREFIXED[index] ? `så ` : ''
   const withReason = getReasonText(reason)
-  return `${what || 'Dette'} er ${prefix}${lcFirst(amount)} krøkkete ${withReason}`.trim()
+  return `${what || 'Dette'} er ${prefix}${amountText} krøkkete ${withReason}`.trim()
 }
 
 export function getReasonText(reason = '') {

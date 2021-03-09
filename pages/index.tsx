@@ -102,7 +102,7 @@ function HomePage() {
                 const slug = AMOUNT_SLUGS[i]
                 return (
                   <option key={slug} value={slug}>
-                    {amount}
+                    {amount} krøkkete
                   </option>
                 )
               })}
