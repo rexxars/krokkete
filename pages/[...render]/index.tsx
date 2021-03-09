@@ -42,7 +42,11 @@ export async function getServerSideProps({params, req, query}) {
     : ALLOWED_AMOUNTS[AMOUNT_SLUGS.indexOf(DEFAULT_AMOUNT)]
 
   const what = segments.shift()
-  const reason = query.reason || undefined
+  const reason = query.reason || null
+
+  if (!what) {
+    return {redirect: {destination: BASE_URL, permanent: true}}
+  }
 
   return {
     props: {amount, what, reason},
