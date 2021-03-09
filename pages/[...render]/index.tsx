@@ -11,6 +11,7 @@ import {Layout} from '../../components/Layout'
 import {OpenGraph} from '../../components/OpenGraph'
 import {Unenthusiasm} from '../../components/Unethusiasm'
 import {CrookedText, getCrookedText, getReasonText} from '../../components/CrookedText'
+import {recordView} from '../../data/sanityClient'
 
 function RenderPage({amount, what, reason}) {
   return (
@@ -47,6 +48,9 @@ export async function getServerSideProps({params, req, query}) {
   if (!what) {
     return {redirect: {destination: BASE_URL, permanent: true}}
   }
+
+  // Silently fail
+  recordView({what, amount, reason}).catch(() => null)
 
   return {
     props: {amount, what, reason},
