@@ -36,7 +36,7 @@ function RenderPage({amount, what, reason}) {
 
 export async function getServerSideProps({params, req, query}) {
   const segments = params.render.slice()
-  const [hostAmount] = (req.headers.host || '').replace('xn--jvla-voa', 'jaevla').split('.', 1)
+  const [hostAmount] = (req.headers.host || '').replace('xn--jvla-voa', 'jævla').split('.', 1)
   const rawAmount = (IS_LOCAL ? segments.shift() : hostAmount).toLowerCase()
   const amount = AMOUNT_SLUGS.includes(rawAmount)
     ? ALLOWED_AMOUNTS[AMOUNT_SLUGS.indexOf(rawAmount)]

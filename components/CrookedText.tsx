@@ -2,7 +2,7 @@ import React from 'react'
 import {AMOUNT_SLUGS, AMOUNT_SO_PREFIXED, ALLOWED_AMOUNTS} from '../data/constants'
 
 export function getCrookedText({amount, what, reason = ''}) {
-  const amountSlug = toAmountSlug(amount)
+  const amountSlug = amount.toLowerCase()
   const index = AMOUNT_SLUGS.indexOf(amountSlug)
   const amountText = lcFirst(ALLOWED_AMOUNTS[index])
   const prefix = AMOUNT_SO_PREFIXED[index] ? `så ` : ''
@@ -22,8 +22,4 @@ export function CrookedText({amount, what, reason}) {
 
 function lcFirst(str: string): string {
   return (str[0] || '').toLowerCase() + str.slice(1)
-}
-
-function toAmountSlug(amount: string) {
-  return amount.toLowerCase().replace('æ', 'ae')
 }

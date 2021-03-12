@@ -12,7 +12,7 @@ const sanityClient = new SanityClient({
 
 export function recordView({what, amount, reason}) {
   if (!SANITY_TOKEN) {
-    return
+    return Promise.resolve()
   }
 
   const hash = crypto
