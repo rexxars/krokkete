@@ -143,7 +143,7 @@ function HomePage() {
 
 export async function getServerSideProps({req}) {
   const host = req.headers.host || ''
-  const redirect = !IS_LOCAL && !host.startsWith('www') && !host.startsWith('xn--')
+  const redirect = !IS_LOCAL && !host.startsWith('www') && !host.startsWith('xn--krkkete')
   return redirect ? {redirect: {destination: BASE_URL, permanent: true}} : {props: {}}
 }
 
